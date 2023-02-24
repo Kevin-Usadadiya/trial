@@ -1,6 +1,9 @@
 import sqlite3
 from hashids import Hashids
 from flask import Flask, render_template, request, flash, redirect, url_for
+import validators
+
+app = Flask(__name__)
 
 
 def get_db_connection():
@@ -20,23 +23,28 @@ def index():
     conn = get_db_connection()
 
     if request.method == 'POST':
-        url = request.form['url']
-
+        url = request.form['url']                  
+        valid= validators.url(url)
+        
         if not url:
             flash('The URL is required!')
             return redirect(url_for('index'))
+        elif valid != True:
+            flash("Invalid url")    
+        else:
+            url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)',
+                                    (url,))
+            conn.commit()
+            conn.close()
 
-        url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)',
-                                (url,))
-        conn.commit()
-        conn.close()
+            url_id = url_data.lastrowid
 
-        url_id = url_data.lastrowid
-        hashid = hashids.encode(url_id)
-        short_url = request.host_url + hashid
+            hashid = hashids.encode(url_id)
+                
+            short_url = request.host_url + hashid
 
-        return render_template('index.html', short_url=short_url)
-
+            return render_template('index.html', short_url=short_url)
+            
     return render_template('index.html')
 
 
