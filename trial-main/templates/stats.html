@@ -10,9 +10,9 @@
     <table class="table table-hover align-middle table-secondary table-bordered" >
         <thead class="table-dark text-center">
             <tr>
-            <th scope="col">#</th>
-            <th scope="col">Short</th>
-            <th scope="col">Original</th>
+            <th scope="col">Sr.no</th>
+            <th scope="col">Shorten URL</th>
+            <th scope="col">Original URL</th>
             <th scope="col">Clicks</th>
             <th scope="col">Creation Date</th>
             <th scope="col">Action</th>
@@ -22,12 +22,12 @@
             {% for url in urls %}
                 <tr >
                     <th scope="row" class="p-5">{{loop.index}}</th>
-                    <td class="p-5"><a href=" {{ url['original_url'] }}">{{ url['short_url'] }}</a></td>
+                    <td class="p-5"><a href=" {{ url['original_url'] }}" target="_blank">{{ url['shorten_url'] }}</a></td>
                     <td class="p-5" style="word-wrap: break-word;min-width:500px;max-width:500px;">{{ url['original_url'] }}</td>
                     <td class="p-5">{{ url['clicks'] }}</td>
                     <td class="p-5">{{ url['created'] }}</td>
                     <td class="p-5">
-                    <a href="/delete/{{url.id}}" type="button" class="btn btn-danger text-white">Delete</a>
+                    <a href="/delete/{{ url['id'] }}" type="button" class="btn btn-danger text-white" target="_blank">Delete</a>
                     </td>
                 </tr>
             {% endfor %}

@@ -24,7 +24,24 @@
 
 {% if short_url %}
 <hr>
-<span>{{ short_url }}</span>
+<!-- index.js -->
+<span id="myInput">{{short_url}}</span>
+<button class="btn btn-primary" onclick="copyContent()">Copy!</button>
+
+<script>
+    let text = document.getElementById('myInput').innerHTML;
+  const copyContent = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      console.log('Content copied to clipboard');
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  }
+</script>
+
+
+    
 {% endif %}
 
 <div class="container">
@@ -87,4 +104,4 @@
     </div>
     </div>
 </div>
-{% endblock %}
+{% endblock content%}
