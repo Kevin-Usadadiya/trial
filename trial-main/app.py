@@ -2,7 +2,8 @@ import sqlite3
 from flask import Flask, render_template, request, flash, redirect, url_for
 import random  
 import string
-# import validators
+import validators
+
 
 # CONSTANTS
 RANDOM_STRING_DEFAULT_LENGTH = 4
@@ -19,6 +20,8 @@ def get_db_connection():
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'this should be a secret random string'
+# app.config['CSRF_ENABLED'] = True
+app.config['SERVER_NAME'] = 'localhost:5000'
 
 def save_url(fullUrl, shortUrl):
     conn = get_db_connection()
@@ -43,13 +46,13 @@ def index():
     if request.method == 'POST':
         url = request.form['url']
         custom_short_url = request.form['custom_id']                  
-        # valid= validators.url(url)
+        valid= validators.url(url)
         
         if not url:
             flash('The URL is required!')
             return redirect(url_for('index'))
-        # elif valid != True:
-            # flash("Invalid url")    
+        elif valid != True:
+            flash("Invalid url")    
         else:
             if not custom_short_url:
                 custom_short_url = get_random_string()
@@ -113,10 +116,19 @@ def delete_task(id):
         conn.commit()
         return render_template('index.html',id = id)
 
+@app.route('/delete_all')
+def delete_all():
+        conn = get_db_connection()
+        sql = 'DELETE FROM urls'
+        cur = conn.cursor()
+        cur.execute(sql)
+        conn.commit()
+        return render_template('index.html')
+
 @app.route('/about')
 def about():
     return render_template('about.html')
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
