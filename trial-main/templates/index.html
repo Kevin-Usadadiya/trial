@@ -2,12 +2,79 @@
 
 {% block content %}
 <h1>{% block title %} Welcome to TrimIt {% endblock %}</h1>
-<form method="post">
+
+<div class="image">
+    <div class="sec">
+        <div class="content1 d-flex flex-wrap">
+            <h3>SHORT & MANAGE YOUR LINK👉</h3>
+            <p>You can short and manage your link just one click. You need to connect audiences worldwide, manage links and create brand relationships.</p>
+        </div>
+        <div class="sub_content">
+            <div class="header">
+                <p>🟢 🟡 🔴</p>
+                <h6 class="mx-5">trimit.com</h6>
+            </div>
+            <div class="main1">
+                <img src="https://www.linkpicture.com/q/Trim-it_1.jpg"  height="35" class=" mx-3">
+            </div>
+            <div class="main2 d-flex justify-content-around flex-wrap">
+                <button class="btn text-white my-2 px-3" style="background-color: hsl(250, 69% , 61%);">Shortlink</button>
+                <button class="btn text-white my-2" style="background-color: hsl(250, 69% , 61%);">Stats</button>
+                <button class="btn text-white my-2"style="background-color: hsl(250, 69% , 61%);">Custom Link</button>
+            </div>
+
+            <div class="main3">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="url">Short your link</label>
+                        <br>
+                        <br>
+                        <div class="input-group mb-3">
+                            <!-- <span class="input-group-text" id="basic-addon3">https://example.com</span> -->
+                            <input type="text" class="form-control p-3" name="url" placeholder="URL to shorten" id="basic-url"
+                                aria-describedby="basic-addon3" value="{{ request.form['url'] }}"autofocus>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="custom_id" id="custom_id" placeholder="Want to customise? (optional)"
+                                class="form-control" value="{{ request.form['custom_id'] }}"></input>
+                            <label for="custom_id">Custom Short ID</label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn text-white" style="background-color: hsl(250, 69% , 61%);">Short Link ⬇️</button>
+                        </div>
+                        {% if  short_url %}
+                        <div class="d-flex">
+                                <div id="myInput" class="mt-4 active">{{short_url}}</div>
+                                <button class="btn btn-primary mx-5 mt-3" onclick="copyContent()">Copy!</button>
+                            </div>
+                                    <script>
+                                        let text = document.getElementById('myInput').innerHTML;
+                                    const copyContent = async () => {
+                                        try {
+                                        await navigator.clipboard.writeText(text);
+                                        console.log('Content copied to clipboard');
+                                        } catch (err) {
+                                        console.error('Failed to copy: ', err);
+                                        }
+                                    }
+                                    </script>
+                            
+                        {% endif %}
+                    </div>
+            </div>
+           
+            
+        </div>
+    </div>
+
+</div>
+
+<!-- <form method="post">
     <div class="form-group">
         <label for="url">URL</label>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3">https://example.com</span>
-            <input type="text" class="form-control" name="url" placeholder="URL to shorten" id="basic-url"
+            <input type="text" class="form-control p-3" name="url" placeholder="URL to shorten" id="basic-url"
                 aria-describedby="basic-addon3" value="{{ request.form['url'] }}" autofocus>
         </div>
     </div>
@@ -20,11 +87,11 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-</form>
+</form> -->
 
-{% if short_url %}
+<!-- {% if short_url %}
 <hr>
-<!-- index.js -->
+index.js
 <span id="myInput">{{short_url}}</span>
 <button class="btn btn-primary" onclick="copyContent()">Copy!</button>
 
@@ -38,11 +105,8 @@
       console.error('Failed to copy: ', err);
     }
   }
-</script>
-
-
-    
-{% endif %}
+</script> 
+{% endif %} -->
 
 <div class="container">
     <h3 class="header-m pb-3"
@@ -54,7 +118,7 @@
 
    
 
-    <div class="container d-md-flex flex-wrap mt-5 d-sm-flex">
+    <div class="container d-md-flex flex-wrap mt-5 d-lg-flex">
 
         <div class="col">
             <div class="column mb-3 py-5">
@@ -70,10 +134,10 @@
             </div>
         </div>
     </div>
-
+    
         <div class="col">
             <div class="column mb-3 py-5 pb-5">
-
+                <a href="{{ url_for('stats')}}" class="text-decoration-none">
             
             <div class="d-flex flex-column justify-content-between mx-2">
                 <div class="d-flex align-items-center flex-column">
@@ -85,8 +149,10 @@
                     tracks clicks on short links and measures the effectiveness of clicks. Extensive statistics of
                     clicks on short links. Enjoy it!!</p>
             </div>
+        </a>
         </div>
         </div>
+      
 
         <div class="col ">
             <div class="column mb-3 py-5 pb-5">
@@ -104,4 +170,6 @@
     </div>
     </div>
 </div>
+
+
 {% endblock content%}
