@@ -21,20 +21,44 @@
    
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}"> -->
-    <!-- <link rel="stylesheet" href="{{ url_for('index', filename='css/style.css') }}"> -->
-    <!-- <link rel="stylesheet" href="{{ url_for('index', filename='/css/style.css') }}"> -->
-    <!-- <link rel="stylesheet" href="style.css"> -->
+
     {% block stylesheet %}
     <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/index.css') }}"/>
     <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/about.css') }}"/>
     {% endblock stylesheet %}
-
+    
+    
   
    
 
     <title>{% block title %} {% endblock %}</title>
+    <style>
+      body{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+            .hover-underline-animation {
+          display: inline-block;
+          position: relative;
+      }
+
+      .hover-underline-animation:after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          transform: scaleX(0);
+          height: 0.2rem;
+          bottom: 0;
+          left: 0;
+          background-color:black;
+          transform-origin: bottom right;
+          transition: transform 0.25s ease-out
+      }
+
+      .hover-underline-animation:hover:after {
+          transform: scaleX(1);
+          transform-origin: bottom left
+      }
+    </style>
 </head>
 
 <body>
@@ -53,25 +77,32 @@
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <ul class="navbar-nav justify-content-center flex-grow-1 pe-3 px-5">
                 
                 <li class="nav-item active">
-                    <a class="nav-link mt-3 mx-2" href="{{ url_for('about')}}">About</a>
+                    <a class="nav-link mt-3 mx-5 hover-underline-animation" href="{{ url_for('about')}}" style="color:hsl(250, 69% , 61%)!important;">About</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link mt-3 mx-2" href="{{ url_for('stats')}}">Stats</a>
+                    <a class="nav-link mt-3 mx-5 hover-underline-animation" href="{{ url_for('stats')}}" style="color:hsl(250, 69% , 61%)!important;">Stats</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link mt-3 mx-5 hover-underline-animation" href="#proc" style="color:hsl(250, 69% , 61%)!important;">Process</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link mt-3 mx-5 hover-underline-animation" href="#footer" style="color:hsl(250, 69% , 61%)!important;">Contact Us</a>
+                </li>
+                
               </ul>
               <form class="d-flex mt-3" role="search">
-                <button class="btn btn-outline-primary me-4 px-3" type="submit">Login</button>
-                <button class="btn btn-outline-success" type="submit">Sign Up</button>
+                <button class="btn fw-bold me-4 px-4" type="submit" style="border-color: hsl(250, 69% , 61%); color:hsl(250, 69% , 61%);">Login</button>
+                <button class="btn text-white px-4" style="background-color: hsl(250, 69% , 61%);" type="submit">Sign Up</button>
               </form>
               
             </div>
           </div>
         </div>
       </nav>
-      <div class="container" style="margin-top: 7em;">
+      <div class="container-fluid" style="margin-top: 7em;">
         {% for message in get_flashed_messages() %}
         <div class="alert alert-danger">{{ message }}</div>
         {% endfor %}
@@ -88,14 +119,9 @@
    
     
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
-
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
+       
 </body>
 
 </html>

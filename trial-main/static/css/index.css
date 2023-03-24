@@ -8,6 +8,23 @@
     height: auto;
     overflow: hidden;
  }
+html{
+   scroll-behavior: smooth;
+}
+
+.hidden{
+   opacity: 0;
+   filter: blur(5px);
+   transform: translateX(-100%);
+   transition: all 2s;
+ }
+
+ .show{
+   opacity: 1;
+   filter: blur(0);
+   transform: translateX(0);
+ }
+
 
  .sec{
     display: flex;
@@ -16,13 +33,13 @@
  .content1{
     color: whitesmoke;
     width: 340px;
-    margin: 100px;
+    margin-top: 100px;
     margin-left: 170px;
     padding-top: 6%;
  }
  .content1 > h3{
    /* margin-bottom: 15px; */
-   /* height: 50px; */
+   height: -12px;
    width: 250px;
 
  }
@@ -34,12 +51,8 @@
     width:600px;
     border-radius: 10px;
  }
- .header{
-    display: flex;
- }
- /* .header > h6{
-    margin-left: 150px;
- } */
+ 
+ 
 
  .main1{
     margin-left: 37px;
@@ -51,12 +64,78 @@
     margin-left: 30px;
     margin-right: 30px;
  }
+
+ .main2 > button{
+      color: hsl(250, 69% , 61%);
+ }
+ .main2 > button:hover {
+      color: white;
+      background-color: hsl(250, 69% , 61%);
+
+ }
  .main3{
     margin-top: 29px;
     margin-left: 60px;
     margin-right: 60px;
 
  }
+ .process{
+   background-color: #1D1D21;
+   color: white;
+
+ }
+
+ .process_details{
+   background-color: #383838;
+   border-radius: 10px;
+   margin:0px 150px;
+   /* padding: 1%; */
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+
+ }
+
+ .process_info{
+   padding: 1.3em;
+   border-radius: 10px;
+   margin:1.1% 5%;
+   width: 310px;
+ }
+
+ .process_info > h4{
+   color: white;
+   font-weight: bold;
+ }
+ .process_info:hover{
+    padding: 1.3em;
+    background-color:hsl(250, 69% , 61%); 
+    color: white;
+    transition: all;
+     
+   }
+   
+   .process_info > button{
+     color: white;
+     background-color: hsl(250, 69% , 61%);
+     padding: 15px 24px;
+     font-weight: bold;
+     font-size: 1.3em;
+   }
+
+   .process_info:hover > button{
+     color: hsl(250, 69% , 61%);
+     background-color: white;
+     padding: 15px 24px;
+     font-weight: bold;
+   }
+
+   footer{
+      background-color: whitesmoke;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
 
  @media screen  and (max-width:1175px){
     .sec{
@@ -76,6 +155,10 @@
         margin-top: 30px;
         margin: auto;
         padding: 70px;
+    }
+    .sub_content{
+      margin: 20px;
+      overflow: hidden;
     }
     
  }
