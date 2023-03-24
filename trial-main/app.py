@@ -9,7 +9,6 @@ import validators
 RANDOM_STRING_DEFAULT_LENGTH = 4
 
 
-app = Flask(__name__)
 
 
 def get_db_connection():
@@ -17,10 +16,11 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-
+# Flask constructor takes the name of999999999999+
+# current module (__name__) as argument.
 app = Flask(__name__)
+
 app.config['SECRET_KEY'] = 'this should be a secret random string'
-# app.config['CSRF_ENABLED'] = True
 app.config['SERVER_NAME'] = 'localhost:5000'
 
 def save_url(fullUrl, shortUrl):
@@ -41,12 +41,18 @@ def get_random_string(length = RANDOM_STRING_DEFAULT_LENGTH):
     result = ''.join((random.choice(letters)) for x in range(length))  
     return result
 
+
+# The route() function of the Flask class is a decorator,
+# which tells the application which URL should call
+# the associated function.
+
+
 @app.route('/', methods=('GET', 'POST'))
 def index():
     if request.method == 'POST':
         url = request.form['url']
         custom_short_url = request.form['custom_id']                  
-        valid= validators.url(url)
+        valid = validators.url(url)
         
         if not url:
             flash('The URL is required!')
@@ -58,6 +64,7 @@ def index():
                 custom_short_url = get_random_string()
                 while not unique_url(custom_short_url):
                     custom_short_url = get_random_string()
+
             elif not unique_url(custom_short_url):
                 flash('The provided shorten url already exist for some other original url.')
                 return redirect(url_for('index'))
@@ -114,7 +121,7 @@ def delete_task(id):
         cur = conn.cursor()
         cur.execute(sql, (id,))
         conn.commit()
-        return render_template('index.html',id = id)
+        return redirect(url_for('stats'))
 
 @app.route('/delete_all')
 def delete_all():
@@ -129,6 +136,6 @@ def delete_all():
 def about():
     return render_template('about.html')
 
-
 if __name__ == "__main__":
     app.run(debug=True)
+

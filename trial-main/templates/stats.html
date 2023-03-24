@@ -8,7 +8,7 @@
     </div>
     {% else %}
     <table class="table table-hover align-middle table-secondary table-bordered" >
-        <thead class="table-dark text-center">
+        <thead class="table text-center text-white" style="background-color: hsl(250, 69% , 61%);">
             <tr>
             <th scope="col">Sr.no</th>
             <th scope="col">Shorten URL</th>
@@ -27,13 +27,13 @@
                     <td class="p-5">{{ url['clicks'] }}</td>
                     <td class="p-5">{{ url['created'] }}</td>
                     <td class="p-5">
-                    <a href="/delete/{{ url['id'] }}" type="button" class="btn btn-danger text-white" target="_blank">Delete</a>
+                    <a href="/delete/{{ url['id'] }}" type="button" class="btn  text-white" style="background-color:hsl(250, 69% , 61%);" target="_blank">Delete</a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <a href="/delete_all" class="btn btn-danger" type="button">Delete all</a>
+    <a href="/delete_all" class="btn text-white" style="background-color:hsl(250, 69% , 61%);" type="button">Delete all</a>
     {% endif %}
 {% endblock %}

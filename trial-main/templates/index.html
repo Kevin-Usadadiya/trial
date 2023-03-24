@@ -1,175 +1,181 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{% block title %} Welcome to TrimIt {% endblock %}</h1>
+<div class="text-center">
+    <button class="p-3 mb-5" style="color:hsl(250, 69% , 61%); border-radius: 7px; border: white;"><a  class="text-decoration-none" href="#proc" style="color:hsl(250, 69% , 61%)!important; border-radius: 7px; border: white;" >Lets make with simply one click.👈</a></button>
+</div>
 
-<div class="image">
+<h1 class="text-center mb-4" style="width: 900px;font-size: 4em;margin: auto; ">{% block title %} 
+    ALL IN ONE LINK MANAGEMENT FOR YOUR NEEDS. {% endblock %}</h1>
+
+<div class=" container image hidden">
     <div class="sec">
         <div class="content1 d-flex flex-wrap">
             <h3>SHORT & MANAGE YOUR LINK👉</h3>
-            <p>You can short and manage your link just one click. You need to connect audiences worldwide, manage links and create brand relationships.</p>
+            <p>You can short and manage your link just one click. You need to connect audiences worldwide, manage links
+                and create brand relationships.</p>
         </div>
         <div class="sub_content">
             <div class="header">
                 <p>🟢 🟡 🔴</p>
-                <h6 class="mx-5">trimit.com</h6>
+                <h6 class="fw-bold mx-5 px-5" style="color:hsl(250, 69% , 61%);">trimit.com</h6>
             </div>
             <div class="main1">
-                <img src="https://www.linkpicture.com/q/Trim-it_1.jpg"  height="35" class=" mx-3">
+                <img src="https://www.linkpicture.com/q/Trim-it_1.jpg" height="35" class=" mx-3">
             </div>
-            <div class="main2 d-flex justify-content-around flex-wrap">
-                <button class="btn text-white my-2 px-3" style="background-color: hsl(250, 69% , 61%);">Shortlink</button>
-                <button class="btn text-white my-2" style="background-color: hsl(250, 69% , 61%);">Stats</button>
-                <button class="btn text-white my-2"style="background-color: hsl(250, 69% , 61%);">Custom Link</button>
-            </div>
+    
 
             <div class="main3">
                 <form method="post">
                     <div class="form-group">
-                        <label for="url">Short your link</label>
-                        <br>
-                        <br>
-                        <div class="input-group mb-3">
-                            <!-- <span class="input-group-text" id="basic-addon3">https://example.com</span> -->
-                            <input type="text" class="form-control p-3" name="url" placeholder="URL to shorten" id="basic-url"
-                                aria-describedby="basic-addon3" value="{{ request.form['url'] }}"autofocus>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" name="custom_id" id="custom_id" placeholder="Want to customise? (optional)"
-                                class="form-control" value="{{ request.form['custom_id'] }}"></input>
-                            <label for="custom_id">Custom Short ID</label>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn text-white" style="background-color: hsl(250, 69% , 61%);">Short Link ⬇️</button>
-                        </div>
-                        {% if  short_url %}
-                        <div class="d-flex">
-                                <div id="myInput" class="mt-4 active">{{short_url}}</div>
-                                <button class="btn btn-primary mx-5 mt-3" onclick="copyContent()">Copy!</button>
+                    
+                        <div id="carouselExampleIndicators" class="carousel slide">
+                            <div class="main2 d-flex justify-content-around flex-wrap">
+                                <button class="btn fw-bold my-2 px-3" 
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                                    aria-current="true" aria-label="Slide 1">Shortlink</button>
+
+
+                                <button class="btn fw-bold my-2" 
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                    aria-label="Slide 1">Custom Link</button>
                             </div>
-                                    <script>
-                                        let text = document.getElementById('myInput').innerHTML;
-                                    const copyContent = async () => {
-                                        try {
-                                        await navigator.clipboard.writeText(text);
-                                        console.log('Content copied to clipboard');
-                                        } catch (err) {
-                                        console.error('Failed to copy: ', err);
-                                        }
-                                    }
-                                    </script>
-                            
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <br>
+                                    <label for="url">Short your link</label>
+                                    <br>
+                                    <br>
+                                    
+                                    <div class="input-group mb-4">
+
+                                        <input type="text" class="form-control p-3" name="url"
+                                            placeholder="URL to shorten" id="basic-url" aria-describedby="basic-addon3"
+                                            value="{{ request.form['url'] }}" autofocus>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    
+                                       <br>
+                                        <label for="custom_id" >Custom Short ID</label>
+                                        <br>
+                                        <br>
+                                        
+                                        <div class="input-group mb-4">
+                                        <input type="text" name="custom_id" id="custom_id"
+                                        placeholder="Want to customise? (optional)" class="form-control p-3 "></input>
+                                      </div>
+                                        
+                                    </div>
+                               
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit" class="btn text-white"
+                                style="background-color: hsl(250, 69% , 61%);">Short Link ⬇️</button>
+                        </div>
+
+
+
+                        {% if short_url %}
+                        <div class="d-flex">
+                            <div id="myInput" class="mt-4 active">{{short_url}}</div>
+                            <button class="btn mx-5 mt-3 text-white" style="background-color: hsl(250, 69% , 61%);"
+                                onclick="copyContent()">Copy!</button>
+                        </div>
+                        <script>
+                            let text = document.getElementById('myInput').innerHTML;
+                            const copyContent = async () => {
+                                try {
+                                    await navigator.clipboard.writeText(text);
+                                    console.log('Content copied to clipboard');
+                                } catch (err) {
+                                    console.error('Failed to copy: ', err);
+                                }
+                            }
+                        </script>
+
                         {% endif %}
                     </div>
             </div>
-           
-            
+
+
         </div>
     </div>
 
 </div>
+<br>
+<br>
+<br>
 
-<!-- <form method="post">
-    <div class="form-group">
-        <label for="url">URL</label>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">https://example.com</span>
-            <input type="text" class="form-control p-3" name="url" placeholder="URL to shorten" id="basic-url"
-                aria-describedby="basic-addon3" value="{{ request.form['url'] }}" autofocus>
+<div class="container-fluid hidden process py-2 mt-4" id="proc">
+    <h3 class=" display-5 text-center pt-5">
+            OUR SIMPLE PROCESS
+    </h3>
+    <p class="text-center pt-3">
+        Trimit will give you guide to use this platform and what happening after that.
+
+    </p>
+
+    <!-- <div class="process_details"> -->
+        <div class="process_details ">
+
+        
+        <div class="process_info hidden">
+            <button class="btn rounded-circle">1</button>
+            <h4 class="mt-4">PUT YOUR LINK</h4>
+            <p class="mt-4">Be able to track, capture & retarget everyone who clicks on your links through Facebook, Instagram, Twitter, Linkedin, and Google Ads.</p>
         </div>
-    </div>
-    <div class="form-floating mb-3">
-        <input type="text" name="custom_id" id="custom_id" placeholder="Want to customise? (optional)"
-            class="form-control" value="{{ request.form['custom_id'] }}"></input>
-        <label for="custom_id">Custom Short ID</label>
-    </div>
+        <div class="process_info hidden">
+            <button class="btn rounded-circle">2</button>
+            <h4 class="mt-4">CLICK SHORTNER</h4>
+            <p class="mt-4">Customize your link.Edit the title, the description and the picture, make your links sine again and boost your CTR!</p>
+        </div>
+        <div class="process_info hidden">
+            <button class="btn rounded-circle">3</button>
+            <h4 class="mt-4">CREATE CUSTOME URL</h4>
+            <p class="mt-4">Share and campaigns your favourite platforms like Facebook, Twitter, LinkdeIn, Instagram, Google Ads and boost your conversion rate.</p>
+        </div>
+        <div class="process_info hidden">
+            <button class="btn rounded-circle">4</button>
+            <h4 class="mt-4">STATISTICS</h4>
+            <p class="mt-4">You can refer to your previous links. Check the short url.</p>
+        </div>
+        <div class="process_info hidden">
+            <button class="btn rounded-circle">5</button>
+            <h4 class="mt-4">TRACK CLICKS</h4>
+            <p class="mt-4">Track number of clicks on your Shortened Url.</p>
+        </div>
+        <div class="process_info hidden">
+            <button class="btn rounded-circle">6</button>
+            <h4 class="mt-4">SHARE IT!</h4>
+            <p class="mt-4">Share and campaigns your favourite platforms like Facebook, Twitter, LinkdeIn, Instagram, Google Ads and boost your conversion rate.</p>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    <!-- </div> -->
     </div>
-</form> -->
-
-<!-- {% if short_url %}
-<hr>
-index.js
-<span id="myInput">{{short_url}}</span>
-<button class="btn btn-primary" onclick="copyContent()">Copy!</button>
+</div>
 
 <script>
-    let text = document.getElementById('myInput').innerHTML;
-  const copyContent = async () => {
-    try {
-      await navigator.clipboard.writeText(text);
-      console.log('Content copied to clipboard');
-    } catch (err) {
-      console.error('Failed to copy: ', err);
-    }
-  }
-</script> 
-{% endif %} -->
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            console.log(entry)
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show')
+            } else {
+                entry.target.classList.remove('show')
+            }
+        })
+    })
 
-<div class="container">
-    <h3 class="header-m pb-3"
-        style="text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; margin-top: 50px;">
-        TrimIt's Connections Platform</h3>
-    <h4 style="text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">All the products you
-        need to build brand connections, manage links and QR Codes, and connect with audiences everywhere, in a
-        single unified platform.</h4>
-
-   
-
-    <div class="container d-md-flex flex-wrap mt-5 d-lg-flex">
-
-        <div class="col">
-            <div class="column mb-3 py-5">
-            <div class="d-flex flex-column justify-content-between mx-2">
-                <div class="d-flex align-items-center flex-column">
-                    <div class="figure"><i class="m_ico_in"><img src="https://cutt.ly/img/m_ico_m_c_1.svg"
-                                alt="URL Shortener"></i></div>
-                    <h2>URL Shortener</h2>
-                </div>
-                <p class="of_main_2 text-center">TrimIt is a <strong>URL Shortener</strong> and <strong>Link
-                        Management Platform</strong> with a lot of features that will help you handle all your links
-                    in an intuitive way and reveal the potential of your links.</p>
-            </div>
-        </div>
-    </div>
-    
-        <div class="col">
-            <div class="column mb-3 py-5 pb-5">
-                <a href="{{ url_for('stats')}}" class="text-decoration-none">
-            
-            <div class="d-flex flex-column justify-content-between mx-2">
-                <div class="d-flex align-items-center flex-column">
-                    <div class="figure"><i class="m_ico_in"><img src="https://cutt.ly/img/m_ico_m_c_2.svg"
-                                alt="Link Analytics"></i></div>
-                    <h2>Link analytics</h2>
-                </div>
-                <p class="of_main_2 text-center">TrimIt is an advanced <strong>Link Analytics</strong> platform that
-                    tracks clicks on short links and measures the effectiveness of clicks. Extensive statistics of
-                    clicks on short links. Enjoy it!!</p>
-            </div>
-        </a>
-        </div>
-        </div>
-      
-
-        <div class="col ">
-            <div class="column mb-3 py-5 pb-5">
-            <div class="d-flex flex-column justify-content-between mx-2">
-                <div class="d-flex align-items-center flex-column">
-                    <div class="figure"><i class="m_ico_in"><img src="https://cutt.ly/img/m_ico_m_c_4.svg"
-                                alt="QR Codes"></i></div>
-                    <h2>QR Codes</h2>
-                </div>
-                <p class="of_main_2 text-center">Generate <strong>QR codes</strong> and customize them according to
-                    your style and manage their redirection so that QR codes reflect your brand and allow you to
-                    grow your business.</p>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+</script>
 
 
 {% endblock content%}
