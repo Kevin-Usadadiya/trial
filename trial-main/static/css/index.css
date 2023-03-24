@@ -25,6 +25,10 @@ html{
    transform: translateX(0);
  }
 
+.header{
+   display: flex;
+
+}
 
  .sec{
     display: flex;
@@ -161,4 +165,20 @@ html{
       overflow: hidden;
     }
     
+ }
+
+ @media screen and (max-width: 547px){
+   .process_details{
+      background-color: #383838;
+      border-radius: 10px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+   
+    }
+   
+
  }
