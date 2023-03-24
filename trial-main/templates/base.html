@@ -32,6 +32,33 @@
    
 
     <title>{% block title %} {% endblock %}</title>
+    <style>
+      body{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+            .hover-underline-animation {
+          display: inline-block;
+          position: relative;
+      }
+
+      .hover-underline-animation:after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          transform: scaleX(0);
+          height: 0.2rem;
+          bottom: 0;
+          left: 0;
+          background-color:black;
+          transform-origin: bottom right;
+          transition: transform 0.25s ease-out
+      }
+
+      .hover-underline-animation:hover:after {
+          transform: scaleX(1);
+          transform-origin: bottom left
+      }
+    </style>
 </head>
 
 <body>
@@ -53,13 +80,16 @@
               <ul class="navbar-nav justify-content-center flex-grow-1 pe-3 px-5">
                 
                 <li class="nav-item active">
-                    <a class="nav-link mt-3 mx-5" href="{{ url_for('about')}}" style="color:hsl(250, 69% , 61%)!important;">About</a>
+                    <a class="nav-link mt-3 mx-5 hover-underline-animation" href="{{ url_for('about')}}" style="color:hsl(250, 69% , 61%)!important;">About</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link mt-3 mx-5" href="{{ url_for('stats')}}" style="color:hsl(250, 69% , 61%)!important;">Stats</a>
+                    <a class="nav-link mt-3 mx-5 hover-underline-animation" href="{{ url_for('stats')}}" style="color:hsl(250, 69% , 61%)!important;">Stats</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link mt-3 mx-5" href="#proc" style="color:hsl(250, 69% , 61%)!important;">Process</a>
+                    <a class="nav-link mt-3 mx-5 hover-underline-animation" href="#proc" style="color:hsl(250, 69% , 61%)!important;">Process</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link mt-3 mx-5 hover-underline-animation" href="#footer" style="color:hsl(250, 69% , 61%)!important;">Contact Us</a>
                 </li>
                 
               </ul>
