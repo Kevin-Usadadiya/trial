@@ -5,7 +5,7 @@
 
 
 
-Uploading TrimitDemo - Made with Clipchamp.mp4…
+
 
 
 
@@ -16,6 +16,10 @@ SHORT & MANAGE YOUR LINK👉
 
 
 ## Demo📸
+
+
+
+https://github.com/Kevin-Usadadiya/trial/assets/83108939/27cd2af4-0a5b-4065-8329-aa6f8f64d11d
 
 
 
