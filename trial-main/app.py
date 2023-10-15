@@ -21,7 +21,7 @@ def get_db_connection():
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'this should be a secret random string'
-app.config['SERVER_NAME'] = 'https://trimit-eosin.vercel.app/'
+app.config['SERVER_NAME'] = 'localhost:5000'
 
 def save_url(fullUrl, shortUrl):
     conn = get_db_connection()
