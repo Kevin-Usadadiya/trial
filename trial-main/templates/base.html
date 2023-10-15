@@ -15,7 +15,7 @@
     <!-- Google Fonts -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&family=Roboto:wght@500&display=swap" rel="stylesheet">
 
    
@@ -51,30 +51,31 @@
           left: 0;
           background-color:black;
           transform-origin: bottom center;
-          transition: transform 0.25s ease-out
+          transition: transform 0.25s ease-out;
       }
 
       .hover-underline-animation:hover:after {
           transform: scaleX(1);
-          transform-origin: bottom left
+          transform-origin: bottom center;
       }
     </style>
 </head>
 
 <body>
+  
 
-    <nav class="navbar navbar-expand-md fixed-top" >
+    <nav class="navbar navbar-expand-md fixed-top" style="background-color:#efeff9 ;" >
         <div class="container-fluid">
           <a class="navbar-brand ml-2" href="{{ url_for('index')}}">
-            <img src="https://www.linkpicture.com/q/Trim-it_1.jpg"  height="35" class=" mx-3">
+            <img src="https://i.ibb.co/rd4xmHC/Trim-it.jpg"  height="35" class=" mx-3">
         </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" >
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasNavbarLabel">TrimIt</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" ></button>
             </div>
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-center flex-grow-1 pe-3 px-5">
@@ -85,9 +86,9 @@
                 <li class="nav-item active">
                     <a class="nav-link mt-3 mx-5 hover-underline-animation" href="{{ url_for('stats')}}" style="color:hsl(250, 69% , 61%)!important;">Stats</a>
                 </li>
-                <li class="nav-item active">
+                <!-- <li class="nav-item active">
                     <a class="nav-link mt-3 mx-5 hover-underline-animation" href="#proc" style="color:hsl(250, 69% , 61%)!important;">Process</a>
-                </li>
+                </li> -->
                 <li class="nav-item active">
                     <a class="nav-link mt-3 mx-5 hover-underline-animation" href="#footer" style="color:hsl(250, 69% , 61%)!important;">Contact Us</a>
                 </li>
@@ -111,13 +112,6 @@
     
         
     </div>
-   
-
-    
-
-    
-   
-    
 
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
